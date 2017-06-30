@@ -93,3 +93,23 @@ use:
 
     hideViews(myView1,myView2,myView3,.. myViewN)  // Sets all views visibility to GONE
     showViews(myView1,myView2,myView3,.. myViewN)  // Sets all views visibility to VISIBLE
+    
+### Number
+
+#### Number?.orZero() method for all number types
+
+    if(myNumberVar?.orZero())  // return 0 if variable is null
+
+### Boolean
+
+#### Boolean?.orFalse() method
+
+    if(myBooleanVar?.orFalse()) // return false if variable is null
+
+### EditText
+
+#### Text watcher
+
+    var textWatcher = myEditText.addTextWatcher {
+        Log.d(TAG, "text changed!")
+    }
