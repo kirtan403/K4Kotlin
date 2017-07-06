@@ -16,7 +16,7 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    compile 'com.github.kirtan403:K4Kotlin:0.1.1'
+    compile 'com.github.kirtan403:K4Kotlin:0.1.2'
 }
 ```
 
