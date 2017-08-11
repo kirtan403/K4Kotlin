@@ -9,7 +9,7 @@ import android.widget.Spinner
  * Spinner methods for on item select
  */
 
-fun Spinner.OnItemSelected(
+fun Spinner.onItemSelected(
         onNothingSelect: (parent: AdapterView<*>?) -> Unit = { _ -> },
         onItemSelect: (parent: AdapterView<*>?, view: View?, position: Int?, id: Long?) -> Unit = { _, _, _, _ -> }): AdapterView.OnItemSelectedListener {
 
