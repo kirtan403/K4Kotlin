@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.SpinnerAdapter
 
 /**
  * Spinner methods for on item select
@@ -33,16 +34,17 @@ fun Spinner.onItemSelected(
  * Sets ArrayList of objects with an additional string conversion method for objects
  */
 fun Spinner.setItems(
-        arrayList: ArrayList<*>?,
-        function: (item: Any) -> String = { a -> a.toString() }) {
+        items: ArrayList<*>?,
+        function: (item: Any) -> String = { a -> a.toString() }): SpinnerAdapter? {
 
     val finalList: ArrayList<String> = ArrayList<String>()
-    arrayList?.forEach {
+    items?.forEach {
         finalList.add(function(it))
     }
 
     val myAdapter = ArrayAdapter(this.context, android.R.layout.simple_spinner_dropdown_item, finalList)
     adapter = myAdapter
 
+    return adapter
 }
 
