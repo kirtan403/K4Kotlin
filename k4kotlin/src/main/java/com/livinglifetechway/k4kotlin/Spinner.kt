@@ -7,9 +7,8 @@ import android.widget.Spinner
 import android.widget.SpinnerAdapter
 
 /**
- * Spinner methods for on item select
+ * Callback when spinner item is selected
  */
-
 fun Spinner.onItemSelected(
         onNothingSelect: (parent: AdapterView<*>?) -> Unit = { _ -> },
         onItemSelect: (parent: AdapterView<*>?, view: View?, position: Int?, id: Long?) -> Unit = { _, _, _, _ -> }): AdapterView.OnItemSelectedListener {
@@ -23,7 +22,6 @@ fun Spinner.onItemSelected(
             onItemSelect(p0, p1, p2, p3)
         }
 
-
     }
 
     onItemSelectedListener = itemSelected
@@ -33,16 +31,17 @@ fun Spinner.onItemSelected(
 /**
  * Sets ArrayList of objects with an additional string conversion method for objects
  */
-fun Spinner.setItems(
-        items: ArrayList<*>?,
-        function: (item: Any) -> String = { a -> a.toString() }): SpinnerAdapter? {
+fun <T> Spinner.setItems(
+        items: ArrayList<T>?,
+        layoutResource: Int = android.R.layout.simple_spinner_dropdown_item,
+        getTitle: (item: T) -> String = { a -> a.toString() }): SpinnerAdapter? {
 
     val finalList: ArrayList<String> = ArrayList<String>()
     items?.forEach {
-        finalList.add(function(it))
+        finalList.add(getTitle(it))
     }
 
-    val myAdapter = ArrayAdapter(this.context, android.R.layout.simple_spinner_dropdown_item, finalList)
+    val myAdapter = ArrayAdapter(this.context, layoutResource, finalList)
     adapter = myAdapter
 
     return adapter

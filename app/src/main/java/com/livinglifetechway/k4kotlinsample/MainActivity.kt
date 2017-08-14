@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.livinglifetechway.k4kotlin.*
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityMainBinding
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,5 +28,17 @@ class MainActivity : AppCompatActivity() {
         mBinding.buttonShowAll.setOnClickListener { showViews(mBinding.helloWorld, mBinding.edit) }
         mBinding.buttonHideAll.setOnClickListener { hideViews(mBinding.helloWorld, mBinding.edit) }
 
+        // set spinner - example
+        data class Country(var name: String, var code: String)
+
+        val countries: ArrayList<Country> = ArrayList<Country>()
+        countries.add(Country("India", "IND"))
+        countries.add(Country("United States of America", "USA"))
+        mBinding.spinner.setItems(countries) { it.name + " (" + it.code + ")" }
+
+        mBinding.spinner.onItemSelected { _, _, position, _ ->
+            val (name, _) = countries[position.orZero()]
+            toast("You selected : $name")
+        }
     }
 }
