@@ -113,3 +113,24 @@ use:
     var textWatcher = myEditText.addTextWatcher {
         Log.d(TAG, "text changed!")
     }
+
+### Spinner
+
+#### setItems - Set spinner list 
+
+Generates the adapter from the ArrayList of Object and accepts layout file resource and Object to String conversion method.
+
+    spinner.setItems(items) { it.name + " (" + it.code + ")" }  // function that converts item instance to string for spinner
+    
+#### onItemChanged - simpler callback method for OnItemSelectedListener 
+
+    mBinding.spinner.onItemSelected { _, _, position, _ ->
+    	val (name, _) = countries[position.orZero()]
+   	toast("You selected : $name")
+    }
+   
+### Any - helpers for all classes
+
+#### TAG - a property helpful for Log Tags
+
+You don't need to declare a TAG everytime you want to use the `Log.d(TAG,"My log")`. It is declared globally for all classes, and can be used without declaring TAG in class.
