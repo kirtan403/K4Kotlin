@@ -98,13 +98,13 @@ use:
 
 #### Number?.orZero() method for all number types
 
-    if(myNumberVar?.orZero())  // return 0 if variable is null
+    if(myNumberVar.orZero())  // return 0 if variable is null
 
 ### Boolean
 
 #### Boolean?.orFalse() method
 
-    if(myBooleanVar?.orFalse()) // return false if variable is null
+    if(myBooleanVar.orFalse()) // return false if variable is null
 
 ### EditText
 
