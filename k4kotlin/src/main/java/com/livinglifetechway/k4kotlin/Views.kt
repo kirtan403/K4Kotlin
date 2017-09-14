@@ -50,3 +50,12 @@ inline fun View.fadeOut(duration: Long = 400): ViewPropertyAnimator? {
             .alpha(0.0f)
             .setDuration(duration)
 }
+
+/**
+ * Fades to a specific alpha between 0 to 1
+ */
+inline fun View.fadeTo(alpha: Float, duration: Long = 400): ViewPropertyAnimator? {
+    return animate()
+            .alpha(alpha)
+            .setDuration(duration)
+}
