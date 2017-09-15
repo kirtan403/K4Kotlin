@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.livinglifetechway.k4kotlin.*
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityMainBinding
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         mBinding.spinner.onItemSelected { _, _, position, _ ->
             val (name, _) = countries[position.orZero()]
             toast("You selected : $name")
+        }
+
+        mBinding.buttonEnterExitAnimation.setOnClickListener {
+            startActivity<AnimationActivity>()
         }
     }
 }
