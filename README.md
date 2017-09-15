@@ -16,7 +16,7 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    compile 'com.github.kirtan403:K4Kotlin:0.1.5'
+    compile 'com.github.kirtan403:K4Kotlin:0.1.6'
 }
 ```
 
@@ -85,6 +85,23 @@ use:
 
     myView.fadeTo(0.5f)
     myView.fadeTo(0.5f,1000) // Optional duration 
+    
+#### View Animations
+
+Enter and exit animations for views
+
+    mView.enterFromTop()
+    mView.enterFromLeft()
+    mView.enterFromBottom()
+    mView.enterFromRight()
+    
+    mView.exitToTop()
+    mView.exitToLeft()
+    mView.exitToBottom()
+    mView.exitToRight()
+    
+    // with optional duration
+    mView.enterFromTop(1000)
 
 ### Activity
 
