@@ -5,12 +5,12 @@ package com.livinglifetechway.k4kotlin
 /**
  * Returns Zero (0) if it is null
  */
-fun Number?.orZero(): Number = if (this != null) this else 0
+fun Number?.orZero(): Number = this ?: 0
 
-fun Int?.orZero(): Int = if (this != null) this else 0
+fun Int?.orZero(): Int = this ?: 0
 
-fun Long?.orZero(): Long = if (this != null) this else 0
+fun Long?.orZero(): Long = this ?: 0
 
-fun Float?.orZero(): Float = if (this != null) this else 0.0f
+fun Float?.orZero(): Float = this ?: 0.0f
 
-fun Double?.orZero(): Double = if (this != null) this else 0.0
+fun Double?.orZero(): Double = this ?: 0.0
