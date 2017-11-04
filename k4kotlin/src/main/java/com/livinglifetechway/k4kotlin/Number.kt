@@ -9,6 +9,8 @@ fun Number?.orZero(): Number = if (this != null) this else 0
 
 fun Int?.orZero(): Int = if (this != null) this else 0
 
+fun Long?.orZero(): Long = if (this != null) this else 0
+
 fun Float?.orZero(): Float = if (this != null) this else 0.0f
 
 fun Double?.orZero(): Double = if (this != null) this else 0.0
