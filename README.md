@@ -16,7 +16,7 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    compile 'com.github.kirtan403:K4Kotlin:0.1.6'
+    compile 'com.github.kirtan403:K4Kotlin:0.1.7'
 }
 ```
 
@@ -115,6 +115,14 @@ Enter and exit animations for views
 
     hideViews(myView1,myView2,myView3,.. myViewN)  // Sets all views visibility to GONE
     showViews(myView1,myView2,myView3,.. myViewN)  // Sets all views visibility to VISIBLE
+    
+#### dpToPx
+
+    dpToPx(14) // returns px equal to 14dp
+
+#### pxToDp
+
+    pxToDp(14) // returns dp equal to 14px
     
 ### Number
 
