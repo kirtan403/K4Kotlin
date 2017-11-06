@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         mBinding.buttonShow.setOnClickListener { helloWorld.show() }
         mBinding.buttonHide.setOnClickListener { helloWorld.hide() }
         mBinding.buttonInvisible.setOnClickListener { helloWorld.invisible() }
-        mBinding.buttonToggle.setOnClickListener { helloWorld.toggle() }
+        mBinding.buttonToggle.setOnClickListener { helloWorld.toggleVisibility() }
         mBinding.buttonFadeIn.setOnClickListener { helloWorld.fadeIn() }
         mBinding.buttonFadeOut.setOnClickListener { helloWorld.fadeOut() }
         mBinding.buttonHideKeyboard.setOnClickListener { hideKeyboard() }
