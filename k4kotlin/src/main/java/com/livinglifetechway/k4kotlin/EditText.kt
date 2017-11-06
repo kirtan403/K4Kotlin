@@ -4,6 +4,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 
+/**
+ * Easier way to get string from edit text and set the string to it
+ */
+var EditText.value: String
+    get() = text.toString()
+    set(value) = setText(value)
 
 /**
  * Accepts 3 text watcher methods with default empty implementation.
