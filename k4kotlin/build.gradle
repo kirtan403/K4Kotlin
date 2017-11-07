@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
     buildToolsVersion "26.0.2"
 
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -29,7 +29,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-//    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:appcompat-v7:27.0.0'
     testImplementation 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
