@@ -2,6 +2,7 @@ package com.livinglifetechway.k4kotlin
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.ReplacementTransformationMethod
 import android.widget.EditText
 
 /**
@@ -10,6 +11,34 @@ import android.widget.EditText
 var EditText.value: String
     get() = text.toString()
     set(value) = setText(value)
+
+/**
+ * Sets Transformation to uppercase. Converts all lowercase letters typed to uppercase
+ */
+fun EditText.setUppercaseTransformation() {
+    transformationMethod = object : ReplacementTransformationMethod() {
+        private val lower = charArrayOf('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z')
+        private val upper = charArrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
+
+        override fun getOriginal() = lower
+
+        override fun getReplacement() = upper
+    }
+}
+
+/**
+ * Sets Transformation to lowercase. Converts all uppercase letters typed to lowercase
+ */
+fun EditText.setLowercaseTransformation() {
+    transformationMethod = object : ReplacementTransformationMethod() {
+        private val lower = charArrayOf('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z')
+        private val upper = charArrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
+
+        override fun getOriginal() = upper
+
+        override fun getReplacement() = lower
+    }
+}
 
 /**
  * Accepts 3 text watcher methods with default empty implementation.
