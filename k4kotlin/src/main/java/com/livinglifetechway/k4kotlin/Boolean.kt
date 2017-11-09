@@ -5,4 +5,4 @@ package com.livinglifetechway.k4kotlin
 /**
  * Returns false if it is null
  */
-fun Boolean?.orFalse(): Boolean = if (this != null) this else false
+fun Boolean?.orFalse(): Boolean = this ?: false
