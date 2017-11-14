@@ -3,15 +3,10 @@ package com.livinglifetechway.k4kotlin
 import android.util.Log
 
 /**
- * Utility functions for all classes
- */
-
-/**
  * Returns class name. Useful for Log Tags
  */
 val Any.TAG: String
     get() = this::class.java.simpleName
-
 
 /**
  * Logs current object as Debug

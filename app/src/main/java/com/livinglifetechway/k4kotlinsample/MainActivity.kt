@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val binding : ActivityMainBinding = setBindingView(R.layout.abc_action_bar_title_item)
+
         val helloWorld = mBinding.helloWorld
 
         mBinding.buttonShow.setOnClickListener { helloWorld.show() }

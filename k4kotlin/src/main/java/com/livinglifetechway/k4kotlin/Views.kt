@@ -43,6 +43,17 @@ inline fun View.toggleVisibility() {
 }
 
 /**
+ * Hides all the views passed in the arguments
+ */
+fun hideViews(vararg views: View) = views.forEach { it.visibility = View.GONE }
+
+/**
+ * Shows all the views passed in the arguments
+ */
+fun showViews(vararg views: View) = views.forEach { it.visibility = View.VISIBLE }
+
+
+/**
  * Fades in the View
  */
 inline fun View.fadeIn(duration: Long = 400): ViewPropertyAnimator? {
