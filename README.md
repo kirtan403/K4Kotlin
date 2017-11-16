@@ -16,7 +16,7 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    compile 'com.github.kirtan403:K4Kotlin:0.1.7'
+    compile 'com.github.kirtan403:K4Kotlin:0.2.0'
 }
 ```
 
@@ -68,7 +68,7 @@ Instead of
 
 use:
 
-    myView.toggle()
+    myView.toggleVisibility()
     
 
 #### To fade in a view
