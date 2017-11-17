@@ -52,6 +52,19 @@ fun hideViews(vararg views: View) = views.forEach { it.visibility = View.GONE }
  */
 fun showViews(vararg views: View) = views.forEach { it.visibility = View.VISIBLE }
 
+/**
+ * Sets the onClick listener on the View
+ */
+inline fun View.onClick(crossinline function: View.() -> Unit) {
+    setOnClickListener { function() }
+}
+
+/**
+ * Sets the onLongClick listener on the View
+ */
+inline fun View.onLongClick(crossinline function: View.() -> Unit) {
+    setOnLongClickListener { function(); true }
+}
 
 /**
  * Fades in the View
