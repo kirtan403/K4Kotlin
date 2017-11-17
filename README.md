@@ -16,9 +16,30 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    compile 'com.github.kirtan403:K4Kotlin:0.2.0'
+    compile 'com.github.kirtan403:K4Kotlin:0.3.0' // For all modules (NOT RECOMMENDED)
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.3.0' // Core extension functions
+    compile 'com.github.kirtan403:k4kotlin:k4kotlin-retrofit:0.3.0' // Extensions for Retrofit
 }
 ```
+
+
+
+#### NOTE: Upgrading from < 0.3.0
+
+If you are upgrading from `0.1.x` or `0.2.x` to  `> 0.3.0`, you might need to change the dependency in your `build.gradle` file. 
+
+From `0.3.0`, library modules are divided into multiple specific modules. So if you will not change the dependency package, then you might unnecessary adding recurring dependencies you might not need. So 
+
+For including your basic functionality, you should change from 
+
+```gradle
+// from
+compile 'com.github.kirtan403:K4Kotlin:0.2.x'
+// to 
+compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.3.0'
+```
+
+Then, additionally you can add as many other modules you might need.
 
 ## Usage
 
@@ -69,7 +90,7 @@ Instead of
 use:
 
     myView.toggleVisibility()
-    
+​    
 
 #### To fade in a view
 
@@ -85,7 +106,7 @@ use:
 
     myView.fadeTo(0.5f)
     myView.fadeTo(0.5f,1000) // Optional duration 
-    
+
 #### View Animations
 
 Enter and exit animations for views
@@ -108,14 +129,14 @@ Enter and exit animations for views
 #### Hide the keyboard
 
     hideKeyboard() // Anywhere inside your activity
-    
+
 ### Context
 
 #### hide/show multiple views
 
     hideViews(myView1,myView2,myView3,.. myViewN)  // Sets all views visibility to GONE
     showViews(myView1,myView2,myView3,.. myViewN)  // Sets all views visibility to VISIBLE
-    
+
 #### dpToPx
 
     dpToPx(14) // returns px equal to 14dp
@@ -123,7 +144,7 @@ Enter and exit animations for views
 #### pxToDp
 
     pxToDp(14) // returns dp equal to 14px
-    
+
 ### Number
 
 #### Number?.orZero() method for all number types
@@ -151,14 +172,14 @@ Enter and exit animations for views
 Generates the adapter from the ArrayList of Object and accepts layout file resource and Object to String conversion method.
 
     spinner.setItems(items) { it.name + " (" + it.code + ")" }  // function that converts item instance to string for spinner
-    
+
 #### onItemChanged - simpler callback method for OnItemSelectedListener 
 
     mBinding.spinner.onItemSelected { _, _, position, _ ->
     	val (name, _) = countries[position.orZero()]
-   	toast("You selected : $name")
+    	toast("You selected : $name")
     }
-   
+
 ### Any - helpers for all classes
 
 #### TAG - a property helpful for Log Tags
