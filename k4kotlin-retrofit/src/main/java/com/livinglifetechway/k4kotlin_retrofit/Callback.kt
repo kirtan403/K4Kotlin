@@ -12,11 +12,25 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         function()
     }
 
-    private var progressView: View? = null
+    /**
+     * A progress view will be shown when the view is set
+     * And will hide itself when onResponse/onFailure is received
+     * Note:    If you do not want to show the view when callback function is initialized
+     *          you should use lazyProgressView
+     */
+    var progressView: View? = null
         set(view) {
             field = view
-            progressView?.visibility = View.VISIBLE
+            field?.visibility = View.VISIBLE
         }
+
+    /**
+     * A lazy progress view will hide itself when onResponse/onFailure is received
+     * Showing view's visibility should be handled by the user
+     * Note:    If you want to show the view when callback function is initialized
+     *          you should use progressView
+     */
+    var lazyProgressView: View? = null
 
     private var onResponseCallback: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var onFailureCallback: (call: Call<T>?, throwable: Throwable?) -> Unit = { _, _ -> }
@@ -88,6 +102,7 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
 
     private fun hideProgressView() {
         progressView?.visibility = View.GONE
+        lazyProgressView?.visibility = View.GONE
     }
 
     override fun onFailure(call: Call<T>?, t: Throwable?) {
