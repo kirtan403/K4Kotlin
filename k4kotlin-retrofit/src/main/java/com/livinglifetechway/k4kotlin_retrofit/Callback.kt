@@ -1,5 +1,6 @@
 package com.livinglifetechway.k4kotlin_retrofit
 
+import android.view.View
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -10,6 +11,12 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         // dsl method calls
         function()
     }
+
+    private var progressView: View? = null
+        set(view) {
+            field = view
+            progressView?.visibility = View.VISIBLE
+        }
 
     private var onResponseCallback: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var onFailureCallback: (call: Call<T>?, throwable: Throwable?) -> Unit = { _, _ -> }
@@ -79,7 +86,14 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
     private var on510NotExtended: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on511NetworkAuthenticationRequired: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
 
+    private fun hideProgressView() {
+        progressView?.visibility = View.GONE
+    }
+
     override fun onFailure(call: Call<T>?, t: Throwable?) {
+        // hide progress view after call is finished
+        hideProgressView()
+
         // call is completed
         onCompleted(call, null, t)
 
@@ -95,6 +109,9 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
     }
 
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
+        // hide progress view after call is finished
+        hideProgressView()
+
         // call is completed
         onCompleted(call, response, null)
 
