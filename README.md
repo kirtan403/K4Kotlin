@@ -16,9 +16,9 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    compile 'com.github.kirtan403:K4Kotlin:0.3.0' // For all modules (NOT RECOMMENDED)
-    compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.3.0' // Core extension functions
-    compile 'com.github.kirtan403:k4kotlin:k4kotlin-retrofit:0.3.0' // Extensions for Retrofit
+    compile 'com.github.kirtan403:K4Kotlin:0.4.0' // For all modules (NOT RECOMMENDED)
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.4.0' // Core extension functions
+    compile 'com.github.kirtan403:k4kotlin:k4kotlin-retrofit:0.4.0' // Extensions for Retrofit
 }
 ```
 
@@ -42,6 +42,8 @@ compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.3.0'
 Then, additionally you can add as many other modules you might need.
 
 ## Usage
+
+For `k4kotlin-retrofit` module's documentation, [click here](https://github.com/kirtan403/K4Kotlin/wiki/Retrofit)
 
 ### View
 
