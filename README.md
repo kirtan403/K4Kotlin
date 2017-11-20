@@ -1,4 +1,4 @@
-# K4Kotlin [![Release](https://jitpack.io/v/kirtan403/k4kotlin.svg)(https://jitpack.io/#kirtan403/k4kotlin)
+# K4Kotlin [![Release](https://jitpack.io/v/kirtan403/k4kotlin.svg)(https://jitpack.io/#kirtan403/k4kotlin)]
 
 A sweet, small set of Kotlin functions to reduce your android boilerplate code
 
