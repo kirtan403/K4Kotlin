@@ -7,11 +7,6 @@ import retrofit2.Response
 
 class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T> {
 
-    init {
-        // dsl method calls
-        function()
-    }
-
     /**
      * A progress view will be shown when the view is set
      * And will hide itself when onResponse/onFailure is received
@@ -472,4 +467,15 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
     fun on511NetworkAuthenticationRequired(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on511NetworkAuthenticationRequired = function
     }
+
+    // IMPORTANT: If init call is defined at the start of the file,
+    //            It's value will be override by the property's default values
+    //            As property initialization will be called after init
+    //            It init is in the last, property initialization will be done first
+    //            and then init will replace the actual functions
+    init {
+        // dsl method calls
+        function()
+    }
+
 }
