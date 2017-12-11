@@ -2,7 +2,7 @@
 
 A sweet, small set of Kotlin functions to reduce your android boilerplate code
 
-## Dependency
+## Dependency [![](https://jitpack.io/v/kirtan403/k4kotlin/month.svg)](https://jitpack.io/#kirtan403/k4kotlin)
 
 Add this in your project level `build.gradle` file (**not** your module `build.gradle` file):
 
