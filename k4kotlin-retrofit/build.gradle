@@ -34,7 +34,13 @@ dependencies {
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:2.3.0"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //coroutine
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.3'
+
 }
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'kotlin-android-extensions'
