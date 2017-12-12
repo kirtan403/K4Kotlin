@@ -51,11 +51,6 @@ android.libraryVariants.all { variant ->
     artifacts.add('archives', task)
 }
 
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
 task javadoc(type: Javadoc) {
     options.charSet = 'UTF-8'
     failOnError false
@@ -70,7 +65,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives sourcesJar
     archives javadocJar
 }
 
