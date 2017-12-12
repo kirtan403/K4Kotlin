@@ -58,9 +58,10 @@ repositories {
 //}
 
 task javadoc(type: Javadoc) {
-    failOnError  false
+    failOnError false
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
 }
 
 // build a jar with javadoc
@@ -70,7 +71,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-//    archives sourcesJar
     archives javadocJar
 }
 
