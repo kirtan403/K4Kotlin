@@ -30,7 +30,11 @@ fun <T> Call<T>.enqueue(lifecycleOwner: LifecycleOwner, callback: Callback<T>) {
 
 
 /**
- *
+ * Enqueues the current call, wait for the result (T = response.getBody()) and returns the result in a synchronous way.
+ * This is a suspending function and should be used in the coroutines.
+ * You can optionally pass the lifecycleOwner (activity/fragment) to scope the call.
+ * Also you can optionally pass the callback function as well,
+ * it will be called before returning results.
  */
 suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): T {
 
@@ -67,7 +71,12 @@ suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, cal
 
 
 /**
- *
+ * Enqueues the current call, and return the deferred type (Deferred<T>)
+ * So you can get the results with await() call on it.
+ * This is a suspending function and should be used in the coroutines.
+ * You can optionally pass the lifecycleOwner (activity/fragment) to scope the call.
+ * Also you can optionally pass the callback function as well,
+ * it will be called when results are available.
  */
 suspend fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<T> {
 
@@ -104,7 +113,13 @@ suspend fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, 
 
 
 /**
- *
+ * Enqueues the current call, and return the response with the deferred type (Deferred<Response<T>>)
+ * So you can get the response object with await() call on it.
+ * It is the same object you receive on onResponse callback
+ * This is a suspending function and should be used in the coroutines.
+ * You can optionally pass the lifecycleOwner (activity/fragment) to scope the call.
+ * Also you can optionally pass the callback function as well,
+ * it will be called when results are available.
  */
 suspend fun <T> Call<T>.enqueueDeferredResponse(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<Response<T>> {
 
