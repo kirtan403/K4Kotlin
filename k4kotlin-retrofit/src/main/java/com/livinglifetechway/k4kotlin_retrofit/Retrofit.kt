@@ -61,7 +61,12 @@ suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, cal
 
         override fun onResponse(call: Call<T>?, response: Response<T>?) {
             callback?.onResponse(call, response)
-            deferred.complete(response?.body()!!)
+            if (response?.body() != null) {
+                deferred.complete(response.body()!!)
+            } else {
+                deferred.completeExceptionally(kotlin.NullPointerException("Result body is null"))
+            }
+
         }
 
     })
@@ -78,7 +83,7 @@ suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, cal
  * Also you can optionally pass the callback function as well,
  * it will be called when results are available.
  */
-suspend fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<T> {
+fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<T> {
 
     val deferred = CompletableDeferred<T>()
 
@@ -121,7 +126,7 @@ suspend fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, 
  * Also you can optionally pass the callback function as well,
  * it will be called when results are available.
  */
-suspend fun <T> Call<T>.enqueueDeferredResponse(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<Response<T>> {
+fun <T> Call<T>.enqueueDeferredResponse(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<Response<T>> {
 
     val deferred = CompletableDeferred<Response<T>>()
 

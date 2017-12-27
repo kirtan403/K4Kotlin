@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context="com.livinglifetechway.k4kotlinsample.RetrofitActivity">
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:gravity="left"
+            android:padding="10dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_response"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap"
+            app:justifyContent="space_around">
+
+            <Button
+                android:id="@+id/btn_enqueue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enqueue" />
+
+            <Button
+                android:id="@+id/btn_enqueue_await"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enqueue Await" />
+
+            <Button
+                android:id="@+id/btn_enqueue_await_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enqueue Await With Error" />
+
+            <Button
+                android:id="@+id/btn_enqueue_await_runblocking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enqueue Await in Runblocking" />
+
+            <Button
+                android:id="@+id/btn_enqueue_deferred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enqueue Deferred" />
+
+            <Button
+                android:id="@+id/btn_enqueue_deferred_resp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enqueue Deferred Response" />
+        </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
+
+</layout>
