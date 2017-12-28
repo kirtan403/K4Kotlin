@@ -61,12 +61,6 @@
                 android:text="Enqueue Await With Error" />
 
             <Button
-                android:id="@+id/btn_enqueue_await_runblocking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enqueue Await in Runblocking" />
-
-            <Button
                 android:id="@+id/btn_enqueue_deferred"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

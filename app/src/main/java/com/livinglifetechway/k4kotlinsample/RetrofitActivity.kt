@@ -10,8 +10,6 @@ import com.livinglifetechway.k4kotlinsample.RetrofitApi.ApiClient
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityRetrofitBinding
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.runBlocking
 
 class RetrofitActivity : AppCompatActivity() {
 
@@ -20,21 +18,7 @@ class RetrofitActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = setBindingView(R.layout.activity_retrofit)
 
-//        runBlocking {
-//            val job = launch(UI) {
-//                val enqueueAwait = ApiClient.service.getUserDetails().enqueueAwait(this@RetrofitActivity, RetrofitCallback {
-//                    progressView = mBinding.progressBar
-//
-//                    on200Ok { call, response ->
-//                        get original response object
-//                    }
-//                })
-//                mBinding.tvResponse.text = enqueueAwait.toString()
-//            }
-//        }
-//        mBinding.tvInfo.text = "This is runblocking"
-
-
+        // simple enqueue with lifecycle owner
         mBinding.btnEnqueue.setOnClickListener {
             mBinding.tvResponse.text = ""
             mBinding.tvInfo.text = ""
@@ -44,6 +28,9 @@ class RetrofitActivity : AppCompatActivity() {
                 on200Ok { call, response ->
                     mBinding.tvInfo.append("Response Received \n")
                     mBinding.tvResponse.text = response?.body()?.toString()
+                }
+                onFailureNotCancelled { call, throwable ->
+                    mBinding.tvInfo.append("Error: ${throwable?.message}\n")
                 }
             })
             mBinding.tvInfo.append("API call enqueued \n")
@@ -99,30 +86,6 @@ class RetrofitActivity : AppCompatActivity() {
             }
         }
 
-
-
-        mBinding.btnEnqueueAwaitRunblocking.setOnClickListener {
-            mBinding.progressBar.show()
-            mBinding.tvResponse.text = ""
-            mBinding.tvInfo.text = ""
-
-            runBlocking {
-                launch(UI) {
-                    mBinding.tvInfo.append("Starting API call \n")
-                    val enqueueAwait = ApiClient.service.getUserDetails().enqueueAwait(this@RetrofitActivity, RetrofitCallback {
-                        progressView = mBinding.progressBar
-
-                        on200Ok { call, response ->
-                            mBinding.tvInfo.append("Response received \n")
-                        }
-                    })
-                    mBinding.tvInfo.append("Await call completed \n")
-                    mBinding.tvResponse.text = enqueueAwait.toString()
-                }
-            }
-            mBinding.tvInfo.append("Run Blocking completed \n")
-        }
-//
         // deferred response body
         mBinding.btnEnqueueDeferred.setOnClickListener {
             mBinding.progressBar.show()

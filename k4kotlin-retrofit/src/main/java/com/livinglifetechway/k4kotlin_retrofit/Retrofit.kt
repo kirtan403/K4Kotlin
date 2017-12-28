@@ -35,6 +35,8 @@ fun <T> Call<T>.enqueue(lifecycleOwner: LifecycleOwner, callback: Callback<T>) {
  * You can optionally pass the lifecycleOwner (activity/fragment) to scope the call.
  * Also you can optionally pass the callback function as well,
  * it will be called before returning results.
+ *
+ * NOTE: This is an experimental API. Please report bugs if you find any.
  */
 suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): T {
 
@@ -82,6 +84,8 @@ suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, cal
  * You can optionally pass the lifecycleOwner (activity/fragment) to scope the call.
  * Also you can optionally pass the callback function as well,
  * it will be called when results are available.
+ *
+ * NOTE: This is an experimental API. Please report bugs if you find any.
  */
 fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<T> {
 
@@ -125,6 +129,8 @@ fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback
  * You can optionally pass the lifecycleOwner (activity/fragment) to scope the call.
  * Also you can optionally pass the callback function as well,
  * it will be called when results are available.
+ *
+ * NOTE: This is an experimental API. Please report bugs if you find any.
  */
 fun <T> Call<T>.enqueueDeferredResponse(lifeCycleOwner: LifecycleOwner? = null, callback: Callback<T>? = null): CompletableDeferred<Response<T>> {
 
