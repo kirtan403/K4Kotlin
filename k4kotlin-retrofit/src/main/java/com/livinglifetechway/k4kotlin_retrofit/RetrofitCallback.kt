@@ -38,6 +38,7 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
     private var on5xxServerError: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var onUnsuccessfulResponse: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var onUnsuccessfulResponseOrFailure: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit = { _, _, _ -> }
+    private var onUnsuccessfulResponseOrFailureNotCancelled: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit = { _, _, _ -> }
     private var on200Ok: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on201Created: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on202Accepted: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
@@ -121,6 +122,11 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
 
         // unsuccessful or failure? -> Failure
         onUnsuccessfulResponseOrFailure(call, null, t)
+
+        // unsuccessful or failure(not cancelled)? -> Failure(not cancelled)
+        if (call?.isCanceled == true) {
+            onUnsuccessfulResponseOrFailureNotCancelled(call, null, t)
+        }
     }
 
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
@@ -147,6 +153,9 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
 
             // unsuccessful or failure? -> Unsuccessful
             onUnsuccessfulResponseOrFailure(call, response, null)
+
+            // unsuccessful or failure (not cancelled)? -> Unsuccessful
+            onUnsuccessfulResponseOrFailureNotCancelled(call, response, null)
         }
 
         // check for individual response code
@@ -255,6 +264,10 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
 
     fun onUnsuccessfulResponseOrFailure(function: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit) {
         this.onUnsuccessfulResponseOrFailure = function
+    }
+
+    fun onUnsuccessfulResponseOrFailureNotCancelled(function: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit) {
+        this.onUnsuccessfulResponseOrFailureNotCancelled = function
     }
 
     fun on200Ok(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
