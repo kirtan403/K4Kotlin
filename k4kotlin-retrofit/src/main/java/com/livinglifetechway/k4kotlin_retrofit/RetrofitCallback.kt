@@ -36,6 +36,8 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
     private var on3xxRedirection: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on4xxClientError: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on5xxServerError: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
+    private var onUnsuccessfulResponse: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
+    private var onUnsuccessfulResponseOrFailure: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit = { _, _, _ -> }
     private var on200Ok: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on201Created: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
     private var on202Accepted: (call: Call<T>?, response: Response<T>?) -> Unit = { _, _ -> }
@@ -116,6 +118,9 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         } else {
             onFailureNotCancelled(call, t)
         }
+
+        // unsuccessful or failure? -> Failure
+        onUnsuccessfulResponseOrFailure(call, null, t)
     }
 
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
@@ -134,6 +139,14 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
             in 300..399 -> on3xxRedirection(call, response)
             in 400..499 -> on4xxClientError(call, response)
             in 500..599 -> on5xxServerError(call, response)
+        }
+
+        // check for unsuccessful callback (any response code other than 2xx)
+        if (response?.isSuccessful != true) {
+            onUnsuccessfulResponse(call, response)
+
+            // unsuccessful or failure? -> Unsuccessful
+            onUnsuccessfulResponseOrFailure(call, response, null)
         }
 
         // check for individual response code
@@ -234,6 +247,14 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
 
     fun on5xxServerError(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on5xxServerError = function
+    }
+
+    fun onUnsuccessfulResponse(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
+        this.onUnsuccessfulResponse = function
+    }
+
+    fun onUnsuccessfulResponseOrFailure(function: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit) {
+        this.onUnsuccessfulResponseOrFailure = function
     }
 
     fun on200Ok(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
