@@ -124,7 +124,7 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         onUnsuccessfulResponseOrFailure(call, null, t)
 
         // unsuccessful or failure(not cancelled)? -> Failure(not cancelled)
-        if (call?.isCanceled == true) {
+        if (call?.isCanceled == false) {
             onUnsuccessfulResponseOrFailureNotCancelled(call, null, t)
         }
     }
