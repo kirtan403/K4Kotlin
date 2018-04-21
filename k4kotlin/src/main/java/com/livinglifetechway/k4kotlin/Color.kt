@@ -12,4 +12,4 @@ fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, 
 /**
  * Get color state list from ContextCompat.getColorStateList(context,color)
  */
-fun Context.getColorStateList(@ColorRes color: Int) = ContextCompat.getColorStateList(this, color)
+fun Context.getColorStateListCompat(@ColorRes color: Int) = ContextCompat.getColorStateList(this, color)
