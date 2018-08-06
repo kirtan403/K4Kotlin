@@ -1,7 +1,6 @@
 package com.livinglifetechway.k4kotlin
 
 import android.app.Activity
-import android.content.Context
 import android.view.inputmethod.InputMethodManager
 
 /**
@@ -9,13 +8,9 @@ import android.view.inputmethod.InputMethodManager
  */
 fun Activity.hideKeyboard(): Boolean {
     val view = currentFocus
-    try {
-        view?.let {
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            return inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-        }
-    } catch (e: TypeCastException) {
-        return false
+    view?.let {
+        val inputMethodManager = getSystemService(InputMethodManager::class.java)
+        return inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
     return false
 }

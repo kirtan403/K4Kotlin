@@ -8,7 +8,7 @@ import android.net.ConnectivityManager
  * NOTE: Don't forget to add android.permission.ACCESS_NETWORK_STATE permission to manifest
  */
 fun Context.isNetworkAvailable(): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val cm = getSystemService(ConnectivityManager::class.java)
     val network = cm.activeNetworkInfo
     return network != null && network.isConnected
 }
