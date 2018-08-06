@@ -8,20 +8,11 @@ import android.view.View
  * current state of the data
  */
 fun <VH : RecyclerView.ViewHolder> RecyclerView.Adapter<VH>.setEmptyStateView(view: View): RecyclerView.AdapterDataObserver {
-    val dataObserver = object : RecyclerView.AdapterDataObserver() {
-        override fun onChanged() = checkForEmptyState()
-        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) = checkForEmptyState()
-        override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) = checkForEmptyState()
-        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) = checkForEmptyState()
-        override fun onItemRangeChanged(positionStart: Int, itemCount: Int) = checkForEmptyState()
-        override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) = checkForEmptyState()
-
-        internal fun checkForEmptyState() {
-            if (itemCount == 0) {
-                view.show()
-            } else {
-                view.hide()
-            }
+    val dataObserver = EmptyStateObserver(this) { empty ->
+        if (empty) {
+            view.show()
+        } else {
+            view.hide()
         }
     }
 
@@ -32,4 +23,23 @@ fun <VH : RecyclerView.ViewHolder> RecyclerView.Adapter<VH>.setEmptyStateView(vi
     dataObserver.checkForEmptyState()
 
     return dataObserver
+}
+
+private class EmptyStateObserver<VH: RecyclerView.ViewHolder>(private val adapter: RecyclerView.Adapter<VH>, private val onStateChanged: (empty: Boolean) -> Unit): RecyclerView.AdapterDataObserver() {
+
+    override fun onChanged() = checkForEmptyState()
+    override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) = checkForEmptyState()
+    override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) = checkForEmptyState()
+    override fun onItemRangeInserted(positionStart: Int, itemCount: Int) = checkForEmptyState()
+    override fun onItemRangeChanged(positionStart: Int, itemCount: Int) = checkForEmptyState()
+    override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) = checkForEmptyState()
+
+    fun checkForEmptyState() {
+        if (adapter.itemCount == 0) {
+            onStateChanged(true)
+        } else {
+            onStateChanged(false)
+        }
+    }
+
 }
