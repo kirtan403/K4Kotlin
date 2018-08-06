@@ -62,10 +62,10 @@ jobs:
             name: Run unit tests
             command: bundle exec fastlane android test
         - store_artifacts:
-            path: firestorelivedata/build/reports/
+            path: k4kotlin/build/reports/
             destination: /reports/
         - store_test_results:
-            path: app/build/test-results/
+            path: k4kotlin/build/test-results/
             destination: /test-results/
 
 workflows:
