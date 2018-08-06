@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'jacoco'
 
 android {
@@ -53,9 +52,6 @@ dependencies {
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:2.4.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-    //coroutine
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21'
 
 }
 repositories {
