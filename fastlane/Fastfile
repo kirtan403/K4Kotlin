@@ -4,7 +4,6 @@ platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test", project_dir: "k4kotlin")
-    gradle(task: "test", project_dir: "k4kotlin-retrofit")
   end
 
   lane :coverage do
