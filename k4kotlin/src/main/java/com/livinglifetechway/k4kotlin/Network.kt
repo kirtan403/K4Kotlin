@@ -1,12 +1,14 @@
 package com.livinglifetechway.k4kotlin
 
+import android.Manifest
 import android.content.Context
 import android.net.ConnectivityManager
+import android.support.annotation.RequiresPermission
 
 /**
  * Checks for network availability
- * NOTE: Don't forget to add android.permission.ACCESS_NETWORK_STATE permission to manifest
  */
+@RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
 fun Context.isNetworkAvailable(): Boolean {
     val cm = getSystemService(ConnectivityManager::class.java)
     val network = cm.activeNetworkInfo
