@@ -59,7 +59,7 @@ class ToastTest {
      */
     @Test
     fun shortToastNow() {
-        application.toast("Hello!")
+        application.toast("How are you?")
         val toast = application.shortToastNow("Boo!")
         assertTrue(shownToasts.contains(toast))
     }
@@ -69,7 +69,7 @@ class ToastTest {
      */
     @Test
     fun longToastNow() {
-        application.toast("Hello!")
+        application.toast("Not bad!")
         val toast = application.longToastNow("This is an unexpected message!")
         assertTrue(shownToasts.contains(toast))
     }
