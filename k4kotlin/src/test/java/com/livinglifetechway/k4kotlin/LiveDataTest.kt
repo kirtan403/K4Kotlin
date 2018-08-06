@@ -67,4 +67,21 @@ class LiveDataTest {
 
     }
 
+    @Test
+    fun toObservableArrayList_Works() {
+        val liveData = MutableLiveData<List<Int>>()
+
+        assertEquals(null, liveData.value)
+
+        val arrayList = liveData.toObservableArrayList()
+
+        assertEquals(arrayList, emptyList<Int>())
+
+        liveData.value = listOf(2, 3, 4)
+
+        assertEquals(liveData.value, listOf(2, 3, 4))
+
+        assertEquals(arrayList, listOf(2, 3, 4))
+    }
+
 }
