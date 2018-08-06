@@ -22,10 +22,10 @@ fun <T> Call<T>.enqueue(lifecycleOwner: LifecycleOwner, callback: Callback<T>) {
     lifecycleOwner.lifecycle.addObserver(object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun cancelCalls() {
-            this@enqueue.cancel()
+            cancel()
         }
     })
-    this.enqueue(callback)
+    enqueue(callback)
 }
 
 
@@ -44,18 +44,18 @@ suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, cal
 
     deferred.invokeOnCompletion {
         if (deferred.isCancelled) {
-            this.cancel()
+            cancel()
         }
     }
 
     lifeCycleOwner?.lifecycle?.addObserver(object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun cancelCalls() {
-            this@enqueueAwait.cancel()
+            cancel()
         }
     })
 
-    this.enqueue(object : Callback<T> {
+    enqueue(object : Callback<T> {
         override fun onFailure(call: Call<T>, t: Throwable) {
             callback?.onFailure(call, t)
             deferred.completeExceptionally(t)
@@ -93,18 +93,18 @@ fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback
 
     deferred.invokeOnCompletion {
         if (deferred.isCancelled) {
-            this.cancel()
+            cancel()
         }
     }
 
     lifeCycleOwner?.lifecycle?.addObserver(object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun cancelCalls() {
-            this@enqueueDeferred.cancel()
+            cancel()
         }
     })
 
-    this.enqueue(object : Callback<T> {
+    enqueue(object : Callback<T> {
         override fun onFailure(call: Call<T>, t: Throwable) {
             callback?.onFailure(call, t)
             deferred.completeExceptionally(t)
@@ -138,18 +138,18 @@ fun <T> Call<T>.enqueueDeferredResponse(lifeCycleOwner: LifecycleOwner? = null, 
 
     deferred.invokeOnCompletion {
         if (deferred.isCancelled) {
-            this.cancel()
+            cancel()
         }
     }
 
     lifeCycleOwner?.lifecycle?.addObserver(object : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun cancelCalls() {
-            this@enqueueDeferredResponse.cancel()
+            cancel()
         }
     })
 
-    this.enqueue(object : Callback<T> {
+    enqueue(object : Callback<T> {
         override fun onFailure(call: Call<T>, t: Throwable) {
             callback?.onFailure(call, t)
             deferred.completeExceptionally(t)
