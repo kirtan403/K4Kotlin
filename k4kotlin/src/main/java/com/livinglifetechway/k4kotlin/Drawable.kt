@@ -7,8 +7,11 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.DrawableCompat
 
 /**
- * Get color from ContextCompat.getColor(context,color)
+ * Get color from [ContextCompat.getColor]
  */
 fun Context.getDrawableCompat(@DrawableRes drawable: Int) = ContextCompat.getDrawable(this, drawable)
 
+/**
+ * Set drawable tint from [DrawableCompat.setTint]
+ */
 fun Drawable.setTintCompat(color: Int) = DrawableCompat.setTint(DrawableCompat.wrap(this), color)
