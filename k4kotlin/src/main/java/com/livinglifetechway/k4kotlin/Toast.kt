@@ -65,11 +65,12 @@ private fun makeToast(ctx: Context?, msg: String, duration: Int): Toast? {
 private object ToastQueue {
     val toastQueue = mutableListOf<Toast>()
 
-    fun cancelToasts() {
+
+    internal fun cancelToasts() {
         toastQueue.forEach { it.cancel() }
         toastQueue.clear()
     }
 
-    fun removeToast(toast: Toast) = toastQueue.remove(toast)
+    internal fun removeToast(toast: Toast) = toastQueue.remove(toast)
 
 }
