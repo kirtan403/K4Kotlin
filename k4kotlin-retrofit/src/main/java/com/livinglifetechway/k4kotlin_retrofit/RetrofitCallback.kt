@@ -270,7 +270,7 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         this.on4xxClientError = function
     }
 
-    /* Set the callback for 5xx server errors **/
+    /** Set the callback for 5xx server errors **/
     fun on5xxServerError(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on5xxServerError = function
     }
