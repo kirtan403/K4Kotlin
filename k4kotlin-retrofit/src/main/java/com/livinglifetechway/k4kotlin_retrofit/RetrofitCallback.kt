@@ -5,6 +5,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * API for creating a [Callback] with more advanced functionality.
+ *
+ * A [RetrofitCallback] provides callbacks for each response code, as well as handling of a progress view.
+ */
 class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T> {
 
     /**
@@ -103,6 +108,7 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         lazyProgressView?.visibility = View.GONE
     }
 
+    /** Called when the [call] has failed. **/
     override fun onFailure(call: Call<T>?, t: Throwable?) {
         // hide progress view after call is finished
         hideProgressView()
@@ -129,6 +135,7 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
         }
     }
 
+    /** Called upon a successful [response] from the [call] **/
     override fun onResponse(call: Call<T>?, response: Response<T>?) {
         // hide progress view after call is finished
         hideProgressView()
@@ -222,282 +229,353 @@ class RetrofitCallback<T>(function: RetrofitCallback<T>.() -> Unit) : Callback<T
     }
 
     // DSL
+
+    /** Set the response callback **/
     fun onResponseCallback(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.onResponseCallback = function
     }
 
+    /** Set the failure callback **/
     fun onFailureCallback(function: (call: Call<T>?, throwable: Throwable?) -> Unit) {
         this.onFailureCallback = function
     }
 
+    /** Set the completed callback (called on both response and failure **/
     fun onCompleted(function: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit) {
         this.onCompleted = function
     }
 
+    /** Set the cancelled callback **/
     fun onCancelled(function: (call: Call<T>?, throwable: Throwable?) -> Unit) {
         this.onCancelled = function
     }
 
+    /** Set the callback for non-cancel failures **/
     fun onFailureNotCancelled(function: (call: Call<T>?, throwable: Throwable?) -> Unit) {
         this.onFailureNotCancelled = function
     }
 
+    /** Set the success callback **/
     fun on2xxSuccess(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on2xxSuccess = function
     }
 
+    /** Set the callback for redirection **/
     fun on3xxRedirection(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on3xxRedirection = function
     }
 
+    /** Set the callback for 4xx client errors **/
     fun on4xxClientError(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on4xxClientError = function
     }
 
+    /* Set the callback for 5xx server errors **/
     fun on5xxServerError(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on5xxServerError = function
     }
 
+    /** Set the callback for unsuccessful responses **/
     fun onUnsuccessfulResponse(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.onUnsuccessfulResponse = function
     }
 
+    /** Set the callback for results other than success (i.e. error or failures) **/
     fun onUnsuccessfulResponseOrFailure(function: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit) {
         this.onUnsuccessfulResponseOrFailure = function
     }
 
+    /** Set the callback for error or failure, but not cancellation **/
     fun onUnsuccessfulResponseOrFailureNotCancelled(function: (call: Call<T>?, response: Response<T>?, throwable: Throwable?) -> Unit) {
         this.onUnsuccessfulResponseOrFailureNotCancelled = function
     }
 
+    /** Set the callback for 200 responses **/
     fun on200Ok(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on200Ok = function
     }
 
+    /** Set the callback for 201 responses **/
     fun on201Created(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on201Created = function
     }
 
+    /** Set the callback for 202 responses **/
     fun on202Accepted(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on202Accepted = function
     }
 
+    /** Set the callback for 203 responses **/
     fun on203NonAuthoritativeInformation(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on203NonAuthoritativeInformation = function
     }
 
+    /** Set the callback for 204 responses **/
     fun on204NoContent(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on204NoContent = function
     }
 
+    /** Set the callback for 205 responses **/
     fun on205ResetContent(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on205ResetContent = function
     }
 
+    /** Set the callback for 206 responses **/
     fun on206PartialContent(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on206PartialContent = function
     }
 
+    /** Set the callback for 207 responses **/
     fun on207MultiStatus(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on207MultiStatus = function
     }
 
+    /** Set the callback for 208 responses **/
     fun on208AlreadyReported(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on208AlreadyReported = function
     }
 
+    /** Set the callback for 226 responses **/
     fun on226ImUsed(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on226ImUsed = function
     }
 
+    /** Set the callback for 300 responses **/
     fun on300MultipleChoices(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on300MultipleChoices = function
     }
 
+    /** Set the callback for 301 responses **/
     fun on301MovedPermanently(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on301MovedPermanently = function
     }
 
+    /** Set the callback for 302 responses **/
     fun on302Found(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on302Found = function
     }
 
+    /** Set the callback for 303 responses **/
     fun on303SeeOther(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on303SeeOther = function
     }
 
+    /** Set the callback for 304 responses **/
     fun on304NotModified(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on304NotModified = function
     }
 
+    /** Set the callback for 305 responses **/
     fun on305UseProxy(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on305UseProxy = function
     }
 
+    /** Set the callback for 306 responses **/
     fun on306SwitchProxy(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on306SwitchProxy = function
     }
 
+    /** Set the callback for 307 responses **/
     fun on307TemporaryRedirect(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on307TemporaryRedirect = function
     }
 
+    /** Set the callback for 308 responses **/
     fun on308PermanentRedirect(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on308PermanentRedirect = function
     }
 
+    /** Set the callback for 400 responses **/
     fun on400BadRequest(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on400BadRequest = function
     }
 
+    /** Set the callback for 401 responses **/
     fun on401Unauthorized(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on401Unauthorized = function
     }
 
+    /** Set the callback for 402 responses **/
     fun on402PaymentFailed(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on402PaymentFailed = function
     }
 
+    /** Set the callback for 403 responses **/
     fun on403Forbidden(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on403Forbidden = function
     }
 
+    /** Set the callback for 404 responses **/
     fun on404NotFound(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on404NotFound = function
     }
 
+    /** Set the callback for 405 responses **/
     fun on405MethodNotAllowed(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on405MethodNotAllowed = function
     }
 
+    /** Set the callback for 406 responses **/
     fun on406NotAcceptable(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on406NotAcceptable = function
     }
 
+    /** Set the callback for 407 responses **/
     fun on407ProxyAuthenticationRequired(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on407ProxyAuthenticationRequired = function
     }
 
+    /** Set the callback for 408 responses **/
     fun on408RequestTimeout(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on408RequestTimeout = function
     }
 
+    /** Set the callback for 409 responses **/
     fun on409Conflict(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on409Conflict = function
     }
 
+    /** Set the callback for 410 responses **/
     fun on410Gone(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on410Gone = function
     }
 
+    /** Set the callback for 411 responses **/
     fun on411LengthRequired(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on411LengthRequired = function
     }
 
+    /** Set the callback for 412 responses **/
     fun on412PreconditionFailed(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on412PreconditionFailed = function
     }
 
+    /** Set the callback for 413 responses **/
     fun on413PayloadTooLarge(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on413PayloadTooLarge = function
     }
 
+    /** Set the callback for 414 responses **/
     fun on414UriTooLong(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on414UriTooLong = function
     }
 
+    /** Set the callback for 415 responses **/
     fun on415UnsupportedMediaType(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on415UnsupportedMediaType = function
     }
 
+    /** Set the callback for 416 responses **/
     fun on416RangeNotSatisfiable(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on416RangeNotSatisfiable = function
     }
 
+    /** Set the callback for 417 responses **/
     fun on417ExpectationFailed(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on417ExpectationFailed = function
     }
 
+    /** Set the callback for 418 responses **/
     fun on418ImaTeapot(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on418ImaTeapot = function
     }
 
+    /** Set the callback for 421 responses **/
     fun on421MisdirectedRequest(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on421MisdirectedRequest = function
     }
 
+    /** Set the callback for 422 responses **/
     fun on422UnprocessableEntity(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on422UnprocessableEntity = function
     }
 
+    /** Set the callback for 423 responses **/
     fun on423Locked(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on423Locked = function
     }
 
+    /** Set the callback for 424 responses **/
     fun on424FailedDependency(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on424FailedDependency = function
     }
 
+    /** Set the callback for 426 responses **/
     fun on426UpgradeRequired(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on426UpgradeRequired = function
     }
 
+    /** Set the callback for 428 responses **/
     fun on428PreconditionRequired(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on428PreconditionRequired = function
     }
 
+    /** Set the callback for 429 responses **/
     fun on429TooManyRequests(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on429TooManyRequests = function
     }
 
+    /** Set the callback for 431 responses **/
     fun on431RequestHeaderFieldsTooLarge(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on431RequestHeaderFieldsTooLarge = function
     }
 
+    /** Set the callback for 451 responses **/
     fun on451UnavailableForLegalReasons(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on451UnavailableForLegalReasons = function
     }
 
+    /** Set the callback for 500 responses **/
     fun on500InternalServerError(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on500InternalServerError = function
     }
 
+    /** Set the callback for 501 responses **/
     fun on501NotImplemented(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on501NotImplemented = function
     }
 
+    /** Set the callback for 502 responses **/
     fun on502BadGateway(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on502BadGateway = function
     }
 
+    /** Set the callback for 503 responses **/
     fun on503ServiceUnavailable(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on503ServiceUnavailable = function
     }
 
+    /** Set the callback for 504 responses **/
     fun on504GatewayTimeout(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on504GatewayTimeout = function
     }
 
+    /** Set the callback for 505 responses **/
     fun on505HttpVersionNotSupported(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on505HttpVersionNotSupported = function
     }
 
+    /** Set the callback for 506 responses **/
     fun on506VariantAlsoNegotiates(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on506VariantAlsoNegotiates = function
     }
 
+    /** Set the callback for 507 responses **/
     fun on507InsufficientStorage(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on507InsufficientStorage = function
     }
 
+    /** Set the callback for 508 responses **/
     fun on508LoopDetected(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on508LoopDetected = function
     }
 
+    /** Set the callback for 510 responses **/
     fun on510NotExtended(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on510NotExtended = function
     }
 
+    /** Set the callback for 511 responses **/
     fun on511NetworkAuthenticationRequired(function: (call: Call<T>?, response: Response<T>?) -> Unit) {
         this.on511NetworkAuthenticationRequired = function
     }
