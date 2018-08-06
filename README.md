@@ -1,4 +1,8 @@
-# K4Kotlin [![Release](https://jitpack.io/v/kirtan403/k4kotlin.svg)](https://jitpack.io/#kirtan403/k4kotlin)
+# K4Kotlin 
+
+[![Release](https://jitpack.io/v/ptrbrynt/k4kotlin.svg)](https://jitpack.io/#ptrbrynt/k4kotlin)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c2c336e19c394865a49eb8be914e0d71)](https://www.codacy.com/project/ptrbrynt/K4Kotlin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ptrbrynt/K4Kotlin&amp;utm_campaign=Badge_Grade_Dashboard)
+[![CircleCI](https://circleci.com/gh/ptrbrynt/K4Kotlin.svg?style=svg)](https://circleci.com/gh/ptrbrynt/K4Kotlin)
 
 A sweet, small set of Kotlin functions to reduce your android boilerplate code
 
