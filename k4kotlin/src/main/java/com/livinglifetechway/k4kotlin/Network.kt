@@ -10,7 +10,7 @@ import android.support.annotation.RequiresPermission
  */
 @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
 fun Context.isNetworkAvailable(): Boolean {
-    val cm = getSystemService(ConnectivityManager::class.java)
-    val network = cm.activeNetworkInfo
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
+    val network = cm?.activeNetworkInfo
     return network != null && network.isConnected
 }
