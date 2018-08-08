@@ -1,6 +1,6 @@
 package com.livinglifetechway.k4kotlin
 
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -3,7 +3,7 @@ package com.livinglifetechway.k4kotlin
 import android.Manifest
 import android.content.Context
 import android.net.ConnectivityManager
-import android.support.annotation.RequiresPermission
+import androidx.annotation.RequiresPermission
 
 /**
  * Checks for network availability

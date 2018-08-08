@@ -1,8 +1,8 @@
 package com.livinglifetechway.k4kotlin
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Transformations
-import android.databinding.ObservableArrayList
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
+import androidx.databinding.ObservableArrayList
 
 /** Nicer syntax for [Transformations.map] **/
 fun <X, Y> LiveData<X>.map(func: (X) -> Y?): LiveData<Y> = Transformations.map(this, func)
