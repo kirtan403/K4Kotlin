@@ -3,11 +3,11 @@ default_platform(:android)
 platform :android do
   desc "Runs all the tests"
   lane :test do
-    gradle(task: "test", project_dir: "k4kotlin")
+    sh("../gradlew test -p ../k4kotlin/")
   end
 
   lane :coverage do
-    gradle(task: "jacocoTestReport", project_dir: "k4kotlin")
+    sh("../gradlew jacocoTestReport -p ../k4kotlin/")
     sh("wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)")
     sh("java -jar ~/codacy-coverage-reporter-assembly-latest.jar report -r ../k4kotlin/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml -l Kotlin")
   end
