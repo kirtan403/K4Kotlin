@@ -18,13 +18,13 @@ Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
     // K4Kotlin core extension functions
-    compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.5.3'
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.5.4'
     
     // Extensions for Retrofit
-    compile 'com.github.kirtan403.k4kotlin:k4kotlin-retrofit:0.5.3'
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin-retrofit:0.5.4'
     
     // For all modules (NOT RECOMMENDED) - Below line will include all the above dependencies
-    compile 'com.github.kirtan403:K4Kotlin:0.5.3'
+    compile 'com.github.kirtan403:K4Kotlin:0.5.4'
 }
 ```
 
