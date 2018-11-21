@@ -3,7 +3,18 @@ package com.livinglifetechway.k4kotlinsample
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.livinglifetechway.k4kotlin.*
+import com.livinglifetechway.k4kotlin.fadeIn
+import com.livinglifetechway.k4kotlin.fadeOut
+import com.livinglifetechway.k4kotlin.hide
+import com.livinglifetechway.k4kotlin.hideKeyboard
+import com.livinglifetechway.k4kotlin.hideViews
+import com.livinglifetechway.k4kotlin.invisible
+import com.livinglifetechway.k4kotlin.onItemSelected
+import com.livinglifetechway.k4kotlin.orZero
+import com.livinglifetechway.k4kotlin.setItems
+import com.livinglifetechway.k4kotlin.show
+import com.livinglifetechway.k4kotlin.showViews
+import com.livinglifetechway.k4kotlin.toggleVisibility
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityMainBinding
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -16,8 +27,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val binding : ActivityMainBinding = setBindingView(R.layout.abc_action_bar_title_item)
 
         val helloWorld = mBinding.helloWorld
 

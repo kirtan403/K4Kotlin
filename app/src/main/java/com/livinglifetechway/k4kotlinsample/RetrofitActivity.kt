@@ -5,11 +5,16 @@ import android.support.v7.app.AppCompatActivity
 import com.livinglifetechway.k4kotlin.setBindingView
 import com.livinglifetechway.k4kotlin.show
 import com.livinglifetechway.k4kotlin.toast
-import com.livinglifetechway.k4kotlin_retrofit.*
+import com.livinglifetechway.k4kotlin_retrofit.RetrofitCallback
+import com.livinglifetechway.k4kotlin_retrofit.enqueue
+import com.livinglifetechway.k4kotlin_retrofit.enqueueAwait
+import com.livinglifetechway.k4kotlin_retrofit.enqueueDeferred
+import com.livinglifetechway.k4kotlin_retrofit.enqueueDeferredResponse
 import com.livinglifetechway.k4kotlinsample.RetrofitApi.ApiClient
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityRetrofitBinding
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
 class RetrofitActivity : AppCompatActivity() {
 
@@ -41,7 +46,7 @@ class RetrofitActivity : AppCompatActivity() {
             mBinding.tvResponse.text = ""
             mBinding.tvInfo.text = ""
 
-            async(UI) {
+            GlobalScope.async(Dispatchers.Main) {
                 mBinding.tvInfo.append("Starting API call \n")
                 val enqueueAwait = ApiClient.service.getUserDetails().enqueueAwait(this@RetrofitActivity, RetrofitCallback {
                     progressView = mBinding.progressBar
@@ -61,7 +66,7 @@ class RetrofitActivity : AppCompatActivity() {
             mBinding.tvResponse.text = ""
             mBinding.tvInfo.text = ""
 
-            val asyncTask = async(UI) {
+            val asyncTask = GlobalScope.async(Dispatchers.Main) {
                 try {
                     mBinding.tvInfo.append("Starting API call \n")
                     val enqueueAwait = ApiClient.service.getUserDetailsError().enqueueAwait(this@RetrofitActivity, RetrofitCallback {
@@ -79,10 +84,10 @@ class RetrofitActivity : AppCompatActivity() {
                 }
             }
 
-            async(UI) {
+            GlobalScope.async(Dispatchers.Main) {
                 asyncTask.join()
                 // you can check the state of the coroutine
-                if (asyncTask.isCompletedExceptionally) toast("Exception")
+                if (asyncTask.getCompletionExceptionOrNull() != null) toast("Exception")
             }
         }
 
@@ -92,7 +97,7 @@ class RetrofitActivity : AppCompatActivity() {
             mBinding.tvResponse.text = ""
             mBinding.tvInfo.text = ""
 
-            async(UI) {
+            GlobalScope.async(Dispatchers.Main) {
                 mBinding.tvInfo.append("Starting API call \n")
                 val enqueueDeferred = ApiClient.service.getUserDetails().enqueueDeferred(this@RetrofitActivity, RetrofitCallback {
                     progressView = mBinding.progressBar
@@ -114,7 +119,7 @@ class RetrofitActivity : AppCompatActivity() {
             mBinding.tvResponse.text = ""
             mBinding.tvInfo.text = ""
 
-            async(UI) {
+            GlobalScope.async(Dispatchers.Main) {
                 mBinding.tvInfo.append("Starting API call \n")
                 val enqueueDeferredResponse = ApiClient.service.getUserDetails().enqueueDeferredResponse(this@RetrofitActivity, RetrofitCallback {
                     progressView = mBinding.progressBar
