@@ -1,1 +1,1 @@
-include ':app', ':k4kotlin', ':k4kotlin-retrofit'
+include ':app', ':k4kotlin', ':k4kotlin-retrofit', ':k4kotlincore'
