@@ -14,6 +14,7 @@ var EditText.value: String
 
 /**
  * Sets Transformation to uppercase. Converts all lowercase letters typed to uppercase
+ * @receiver EditText
  */
 fun EditText.setUppercaseTransformation() {
     transformationMethod = object : ReplacementTransformationMethod() {
@@ -28,6 +29,7 @@ fun EditText.setUppercaseTransformation() {
 
 /**
  * Sets Transformation to lowercase. Converts all uppercase letters typed to lowercase
+ * @receiver EditText
  */
 fun EditText.setLowercaseTransformation() {
     transformationMethod = object : ReplacementTransformationMethod() {
@@ -43,8 +45,13 @@ fun EditText.setLowercaseTransformation() {
 /**
  * Accepts 3 text watcher methods with default empty implementation.
  * Returns the TextWatcher added to EditText
+ * @receiver EditText
+ * @param afterTextChanged optional function for after text changed invocation
+ * @param beforeTextChanged optional function for before text changes invocation
+ * @param onTextChanged function to be called when the text is changed
+ * @return TextWatcher instance created
  */
-fun EditText.addTextWatcher(afterTextChanged: (s: Editable?) -> Unit = { _ -> },
+fun EditText.addTextWatcher(afterTextChanged: (s: Editable?) -> Unit = { },
                             beforeTextChanged: (s: CharSequence?, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
                             onTextChanged: (s: CharSequence?, start: Int, before: Int, count: Int) -> Unit = { _, _, _, _ -> }): TextWatcher {
 
