@@ -12,6 +12,16 @@ var EditText.value: String
     get() = text.toString()
     set(value) = setText(value)
 
+
+/**
+ * Clears the value of the EditText
+ * or you can say, sets the empty text
+ * @receiver EditText
+ */
+fun EditText.clear() {
+    this.value = ""
+}
+
 /**
  * Sets Transformation to uppercase. Converts all lowercase letters typed to uppercase
  * @receiver EditText
