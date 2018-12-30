@@ -55,14 +55,14 @@ fun showViews(vararg views: View) = views.forEach { it.visibility = View.VISIBLE
 /**
  * Sets the onClick listener on the View
  */
-inline fun View.onClick(crossinline function: View.() -> Unit) {
+inline fun <T : View> T.onClick(crossinline function: T.() -> Unit) {
     setOnClickListener { function() }
 }
 
 /**
  * Sets the onLongClick listener on the View
  */
-inline fun View.onLongClick(crossinline function: View.() -> Unit) {
+inline fun <T : View> T.onLongClick(crossinline function: T.() -> Unit) {
     setOnLongClickListener { function(); true }
 }
 
