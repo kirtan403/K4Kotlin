@@ -2,6 +2,7 @@ package com.livinglifetechway.k4kotlin.core
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.util.Base64
 import android.view.View
 import java.io.ByteArrayOutputStream
@@ -46,3 +47,20 @@ fun Bitmap.toBase64(): String {
     }
     return result
 }
+
+/**
+ * Resize the bitmap to specified height and width.
+ */
+fun Bitmap.resize(newWidth: Number, newHeight: Number): Bitmap {
+    val width = width
+    val height = height
+    val scaleWidth = newWidth.toFloat() / width
+    val scaleHeight = newHeight.toFloat() / height
+    val matrix = Matrix()
+    matrix.postScale(scaleWidth, scaleHeight)
+    if (width > 0 && height > 0) {
+        return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
+    }
+    return this
+}
+
