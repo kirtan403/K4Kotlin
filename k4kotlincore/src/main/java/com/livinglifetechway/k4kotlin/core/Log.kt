@@ -9,31 +9,39 @@ val Any.TAG: String
     get() = this::class.java.simpleName
 
 /**
- * Logs current object as Debug
+ * Logs a debug message
+ * @param msg object to log
  */
-inline fun Any.logD(tag: String = TAG) = Log.d(tag, toString())
+inline fun <reified T> T.debug(msg: Any?, throwable: Throwable? = null) = Log.d(this!!.TAG, msg.toString(), throwable)
 
 /**
- * Logs current object as Information
+ * Logs a info message
+ * @param msg object to log
  */
-inline fun Any.logI(tag: String = TAG) = Log.i(tag, toString())
+inline fun <reified T> T.info(msg: Any?, throwable: Throwable? = null) = Log.i(this!!.TAG, msg.toString(), throwable)
+
 
 /**
- * Logs current object as Verbose
+ * Logs a verbose message
+ * @param msg object to log
  */
-inline fun Any.logV(tag: String = TAG) = Log.v(tag, toString())
+inline fun <reified T> T.verbose(msg: Any?, throwable: Throwable? = null) = Log.v(this!!.TAG, msg.toString(), throwable)
 
 /**
- * Logs current object as Warning
+ * Logs a warning message
+ * @param msg object to log
  */
-inline fun Any.logW(tag: String = TAG) = Log.w(tag, toString())
+inline fun <reified T> T.warning(msg: Any?, throwable: Throwable? = null) = Log.w(this!!.TAG, msg.toString(), throwable)
 
 /**
- * Logs current object as Error
+ * Logs a error message
+ * @param msg object to log
  */
-inline fun Any.logE(tag: String = TAG) = Log.e(tag, toString())
+inline fun <reified T> T.error(msg: Any?, throwable: Throwable? = null) = Log.e(this!!.TAG, msg.toString(), throwable)
+
 
 /**
- * Logs current object as Wtf (What a Terrible Failure)
+ * Logs a wtf message
+ * @param msg object to log
  */
-inline fun Any.logWtf(tag: String = TAG) = Log.wtf(tag, toString())
+inline fun <reified T> T.wtf(msg: Any?, throwable: Throwable? = null) = Log.wtf(this!!.TAG, msg.toString(), throwable)
