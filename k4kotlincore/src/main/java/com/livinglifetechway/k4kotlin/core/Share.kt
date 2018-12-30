@@ -97,3 +97,11 @@ fun Context.sendSms(number: String, text: String = ""): Boolean {
         false
     }
 }
+
+/**
+ * Opens your application page inside the play store
+ * @return A boolean representing if the action was successful or not
+ */
+fun Context.openPlayStore(): Boolean =
+        openUrl("market://details?id=${BuildConfig.APPLICATION_ID}") or
+                openUrl("http://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
