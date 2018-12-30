@@ -22,12 +22,12 @@ fun Context?.longToastNow(msg: String) = cancelAndMakeToast(this, msg, Toast.LEN
 
 fun cancelAllToasts() = ToastQueue.cancelToasts()
 
-private fun cancelAndMakeToast(ctx: Context?, msg: String, duration: Int): Toast? {
+fun cancelAndMakeToast(ctx: Context?, msg: String, duration: Int): Toast? {
     ToastQueue.cancelToasts()
     return makeToast(ctx, msg, duration)
 }
 
-private fun makeToast(ctx: Context?, msg: String, duration: Int): Toast? {
+fun makeToast(ctx: Context?, msg: String, duration: Int): Toast? {
     return ctx?.let {
         val toast = Toast.makeText(ctx, msg, duration)
         toast.show()
