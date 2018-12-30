@@ -8,6 +8,9 @@ import android.widget.SpinnerAdapter
 
 /**
  * Callback when spinner item is selected
+ * @param onNothingSelect callback to execute when nothing is selected
+ * @param onItemSelect callback to execute when an item is selected
+ * @return returns an instance of onItemSelectedListener
  */
 fun Spinner.onItemSelected(
         onNothingSelect: (parent: AdapterView<*>?) -> Unit = { _ -> },
@@ -30,13 +33,17 @@ fun Spinner.onItemSelected(
 
 /**
  * Sets ArrayList of objects with an additional string conversion method for objects
+ * @param items list of objects
+ * @param layoutResource layout resource to use to bind the item to
+ * @param getTitle function to execute on each items to properly converts a list of objects to list of strings
+ * @return An instance of SpinnerAdapter
  */
 fun <T> Spinner.setItems(
         items: ArrayList<T>?,
         layoutResource: Int = android.R.layout.simple_spinner_dropdown_item,
         getTitle: (item: T) -> String = { a -> a.toString() }): SpinnerAdapter? {
 
-    val finalList: ArrayList<String> = ArrayList<String>()
+    val finalList: ArrayList<String> = ArrayList()
     items?.forEach {
         finalList.add(getTitle(it))
     }
