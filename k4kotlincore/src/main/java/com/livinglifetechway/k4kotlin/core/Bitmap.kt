@@ -6,6 +6,8 @@ import android.graphics.Matrix
 import android.util.Base64
 import android.view.View
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 
 
@@ -64,3 +66,21 @@ fun Bitmap.resize(newWidth: Number, newHeight: Number): Bitmap {
     return this
 }
 
+/**
+ * Saves the bitmap to the given file
+ * @param file The file instance where the object needs to be saved
+ * @param compressFormat Defaults to PNG value
+ * @param quality Default 100 % of the original quality
+ */
+fun Bitmap.saveFile(
+        file: File,
+        compressFormat: Bitmap.CompressFormat = Bitmap.CompressFormat.PNG,
+        quality: Int = 100) {
+    if (!file.exists()) {
+        file.createNewFile()
+    }
+    val stream = FileOutputStream(file)
+    compress(compressFormat, quality, stream)
+    stream.flush()
+    stream.close()
+}
