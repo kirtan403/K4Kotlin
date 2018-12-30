@@ -67,6 +67,16 @@ inline fun <T : View> T.onLongClick(crossinline function: T.() -> Unit) {
 }
 
 /**
+ * Can update the padding of the specified side without changing other values
+ */
+fun View.updatePadding(paddingStart: Int = getPaddingStart(),
+                       paddingTop: Int = getPaddingTop(),
+                       paddingEnd: Int = getPaddingEnd(),
+                       paddingBottom: Int = getPaddingBottom()) {
+    setPaddingRelative(paddingStart, paddingTop, paddingEnd, paddingBottom)
+}
+
+/**
  * Fades in the View
  */
 inline fun View.fadeIn(duration: Long = 400): ViewPropertyAnimator? {
