@@ -9,7 +9,7 @@
     </style>
 
     <style name="ButtonStyle">
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_margin">6dp</item>
     </style>
 
 </resources>
