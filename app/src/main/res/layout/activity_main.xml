@@ -39,14 +39,17 @@
 
         </LinearLayout>
 
-        <GridLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/gridLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:columnCount="3"
+            android:layout_marginEnd="8dp"
+            app:alignContent="space_around"
+            app:alignItems="center"
+            app:flexWrap="wrap"
+            app:justifyContent="space_evenly"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,77 +57,77 @@
 
             <Button
                 android:id="@+id/button_show"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Show" />
 
             <Button
                 android:id="@+id/button_hide"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Hide" />
 
             <Button
                 android:id="@+id/button_invisible"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Invisible" />
 
             <Button
                 android:id="@+id/button_toggle"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Toggle" />
 
             <Button
                 android:id="@+id/button_fade_in"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Fade In" />
 
             <Button
                 android:id="@+id/button_fade_out"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Fade Out" />
 
             <Button
                 android:id="@+id/button_hide_keyboard"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Hide Keyboard" />
 
             <Button
                 android:id="@+id/button_show_all"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Show All" />
 
             <Button
                 android:id="@+id/button_hide_all"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
                 android:text="Hide All" />
 
-        </GridLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
         <Button
             android:id="@+id/button_enter_exit_animation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="Enter/Exit Animations"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
