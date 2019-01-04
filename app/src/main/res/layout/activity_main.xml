@@ -126,6 +126,13 @@
                 android:layout_height="wrap_content"
                 android:text="Hide All" />
 
+            <Button
+                android:id="@+id/button_alert"
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alert" />
+
         </com.google.android.flexbox.FlexboxLayout>
 
         <Button

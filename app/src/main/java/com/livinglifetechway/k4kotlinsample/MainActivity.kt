@@ -3,6 +3,7 @@ package com.livinglifetechway.k4kotlinsample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.livinglifetechway.k4kotlin.core.androidx.alert
 import com.livinglifetechway.k4kotlin.core.debug
 import com.livinglifetechway.k4kotlin.core.err
 import com.livinglifetechway.k4kotlin.core.fadeIn
@@ -21,6 +22,7 @@ import com.livinglifetechway.k4kotlin.core.showKeyboard
 import com.livinglifetechway.k4kotlin.core.showViews
 import com.livinglifetechway.k4kotlin.core.startActivity
 import com.livinglifetechway.k4kotlin.core.toast
+import com.livinglifetechway.k4kotlin.core.toastNow
 import com.livinglifetechway.k4kotlin.core.toggleVisibility
 import com.livinglifetechway.k4kotlin.core.verbose
 import com.livinglifetechway.k4kotlin.core.warning
@@ -48,6 +50,16 @@ class MainActivity : AppCompatActivity() {
         mBinding.buttonShowKeyboard.onClick { mBinding.edit.showKeyboard() }
         mBinding.buttonShowAll.onClick { showViews(mBinding.helloWorld, mBinding.edit) }
         mBinding.buttonHideAll.onClick { hideViews(mBinding.helloWorld, mBinding.edit) }
+
+        mBinding.buttonAlert.onClick {
+            alert {
+                setTitle("I am alert")
+                setMessage("This is a simple alert that does the amazing things")
+                setPositiveButton("Thanks!") { _, _ ->
+                    toastNow("Alert closed")
+                }
+            }.show()
+        }
 
         // set spinner - example
         data class Country(var name: String, var code: String)
