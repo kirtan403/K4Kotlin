@@ -25,6 +25,7 @@ fun Activity.hideKeyboard(): Boolean {
  */
 fun View.showKeyboard() {
     val imm = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    this.requestFocus()
     imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
 
