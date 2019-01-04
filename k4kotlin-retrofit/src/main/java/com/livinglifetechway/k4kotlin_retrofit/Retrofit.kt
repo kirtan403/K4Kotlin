@@ -1,5 +1,9 @@
 package com.livinglifetechway.k4kotlin_retrofit
 
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 import kotlinx.coroutines.CompletableDeferred
 import retrofit2.Call
 import retrofit2.Callback
@@ -52,14 +56,14 @@ suspend fun <T> Call<T>.enqueueAwait(lifeCycleOwner: LifecycleOwner? = null, cal
     })
 
     this.enqueue(object : Callback<T> {
-        override fun onFailure(call: Call<T>?, t: Throwable?) {
+        override fun onFailure(call: Call<T>, t: Throwable) {
             callback?.onFailure(call, t)
-            deferred.completeExceptionally(t!!)
+            deferred.completeExceptionally(t)
         }
 
-        override fun onResponse(call: Call<T>?, response: Response<T>?) {
+        override fun onResponse(call: Call<T>, response: Response<T>) {
             callback?.onResponse(call, response)
-            if (response?.body() != null) {
+            if (response.body() != null) {
                 deferred.complete(response.body()!!)
             } else {
                 deferred.completeExceptionally(kotlin.NullPointerException("Result body is null"))
@@ -101,14 +105,14 @@ fun <T> Call<T>.enqueueDeferred(lifeCycleOwner: LifecycleOwner? = null, callback
     })
 
     this.enqueue(object : Callback<T> {
-        override fun onFailure(call: Call<T>?, t: Throwable?) {
+        override fun onFailure(call: Call<T>, t: Throwable) {
             callback?.onFailure(call, t)
-            deferred.completeExceptionally(t!!)
+            deferred.completeExceptionally(t)
         }
 
-        override fun onResponse(call: Call<T>?, response: Response<T>?) {
+        override fun onResponse(call: Call<T>, response: Response<T>) {
             callback?.onResponse(call, response)
-            deferred.complete(response?.body()!!)
+            deferred.complete(response.body()!!)
         }
 
     })
@@ -146,14 +150,14 @@ fun <T> Call<T>.enqueueDeferredResponse(lifeCycleOwner: LifecycleOwner? = null, 
     })
 
     this.enqueue(object : Callback<T> {
-        override fun onFailure(call: Call<T>?, t: Throwable?) {
+        override fun onFailure(call: Call<T>, t: Throwable) {
             callback?.onFailure(call, t)
-            deferred.completeExceptionally(t!!)
+            deferred.completeExceptionally(t)
         }
 
-        override fun onResponse(call: Call<T>?, response: Response<T>?) {
+        override fun onResponse(call: Call<T>, response: Response<T>) {
             callback?.onResponse(call, response)
-            deferred.complete(response!!)
+            deferred.complete(response)
         }
 
     })

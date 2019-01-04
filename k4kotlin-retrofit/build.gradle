@@ -66,5 +66,3 @@ artifacts {
     archives sourcesJar
     archives javadocJar
 }
-
-apply plugin: 'kotlin-android-extensions'
