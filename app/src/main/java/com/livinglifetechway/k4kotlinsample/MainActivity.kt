@@ -9,6 +9,7 @@ import com.livinglifetechway.k4kotlin.core.hide
 import com.livinglifetechway.k4kotlin.core.hideKeyboard
 import com.livinglifetechway.k4kotlin.core.hideViews
 import com.livinglifetechway.k4kotlin.core.invisible
+import com.livinglifetechway.k4kotlin.core.onClick
 import com.livinglifetechway.k4kotlin.core.onItemSelected
 import com.livinglifetechway.k4kotlin.core.orZero
 import com.livinglifetechway.k4kotlin.core.setItems
@@ -22,7 +23,7 @@ import com.livinglifetechway.k4kotlinsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    val mBinding: ActivityMainBinding by lazy {
+    private val mBinding: ActivityMainBinding by lazy {
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
     }
 
@@ -31,16 +32,16 @@ class MainActivity : AppCompatActivity() {
 
         val helloWorld = mBinding.helloWorld
 
-        mBinding.buttonShow.setOnClickListener { helloWorld.show() }
-        mBinding.buttonHide.setOnClickListener { helloWorld.hide() }
-        mBinding.buttonInvisible.setOnClickListener { helloWorld.invisible() }
-        mBinding.buttonToggle.setOnClickListener { helloWorld.toggleVisibility() }
-        mBinding.buttonFadeIn.setOnClickListener { helloWorld.fadeIn() }
-        mBinding.buttonFadeOut.setOnClickListener { helloWorld.fadeOut() }
-        mBinding.buttonHideKeyboard.setOnClickListener { hideKeyboard() }
-        mBinding.buttonShowKeyboard.setOnClickListener { mBinding.edit.showKeyboard() }
-        mBinding.buttonShowAll.setOnClickListener { showViews(mBinding.helloWorld, mBinding.edit) }
-        mBinding.buttonHideAll.setOnClickListener { hideViews(mBinding.helloWorld, mBinding.edit) }
+        mBinding.buttonShow.onClick { helloWorld.show() }
+        mBinding.buttonHide.onClick { helloWorld.hide() }
+        mBinding.buttonInvisible.onClick { helloWorld.invisible() }
+        mBinding.buttonToggle.onClick { helloWorld.toggleVisibility() }
+        mBinding.buttonFadeIn.onClick { helloWorld.fadeIn() }
+        mBinding.buttonFadeOut.onClick { helloWorld.fadeOut() }
+        mBinding.buttonHideKeyboard.onClick { hideKeyboard() }
+        mBinding.buttonShowKeyboard.onClick { mBinding.edit.showKeyboard() }
+        mBinding.buttonShowAll.onClick { showViews(mBinding.helloWorld, mBinding.edit) }
+        mBinding.buttonHideAll.onClick { hideViews(mBinding.helloWorld, mBinding.edit) }
 
         // set spinner - example
         data class Country(var name: String, var code: String)
