@@ -8,7 +8,7 @@
         android:layout_margin="8dp"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context="com.livinglifetechway.k4kotlinsample.RetrofitActivity">
+        tools:context="com.livinglifetechway.k4kotlinsample.retrofit.RetrofitActivity">
 
         <TextView
             android:id="@+id/tv_info"

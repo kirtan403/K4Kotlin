@@ -1,4 +1,4 @@
-package com.livinglifetechway.k4kotlinsample.RetrofitApi
+package com.livinglifetechway.k4kotlinsample.retrofit
 
 import retrofit2.Call
 import retrofit2.http.GET

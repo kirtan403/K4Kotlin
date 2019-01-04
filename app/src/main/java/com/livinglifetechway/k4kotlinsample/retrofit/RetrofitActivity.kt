@@ -1,16 +1,16 @@
-package com.livinglifetechway.k4kotlinsample
+package com.livinglifetechway.k4kotlinsample.retrofit
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.livinglifetechway.k4kotlin.setBindingView
-import com.livinglifetechway.k4kotlin.show
-import com.livinglifetechway.k4kotlin.toast
+import androidx.appcompat.app.AppCompatActivity
+import com.livinglifetechway.k4kotlin.core.show
+import com.livinglifetechway.k4kotlin.core.toast
+import com.livinglifetechway.k4kotlin.databinding.setBindingView
 import com.livinglifetechway.k4kotlin_retrofit.RetrofitCallback
 import com.livinglifetechway.k4kotlin_retrofit.enqueue
 import com.livinglifetechway.k4kotlin_retrofit.enqueueAwait
 import com.livinglifetechway.k4kotlin_retrofit.enqueueDeferred
 import com.livinglifetechway.k4kotlin_retrofit.enqueueDeferredResponse
-import com.livinglifetechway.k4kotlinsample.RetrofitApi.ApiClient
+import com.livinglifetechway.k4kotlinsample.R
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityRetrofitBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

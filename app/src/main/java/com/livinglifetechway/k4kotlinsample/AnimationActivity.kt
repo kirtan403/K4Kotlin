@@ -2,10 +2,17 @@ package com.livinglifetechway.k4kotlinsample
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.livinglifetechway.k4kotlin.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.livinglifetechway.k4kotlin.core.enterFromBottom
+import com.livinglifetechway.k4kotlin.core.enterFromLeft
+import com.livinglifetechway.k4kotlin.core.enterFromRight
+import com.livinglifetechway.k4kotlin.core.enterFromTop
+import com.livinglifetechway.k4kotlin.core.exitToBottom
+import com.livinglifetechway.k4kotlin.core.exitToLeft
+import com.livinglifetechway.k4kotlin.core.exitToRight
+import com.livinglifetechway.k4kotlin.core.exitToTop
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityAnimationBinding
 
 class AnimationActivity : AppCompatActivity() {

@@ -2,9 +2,10 @@ package com.livinglifetechway.k4kotlinsample
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.livinglifetechway.k4kotlin.setBindingView
+import androidx.appcompat.app.AppCompatActivity
+import com.livinglifetechway.k4kotlin.databinding.setBindingView
 import com.livinglifetechway.k4kotlinsample.databinding.ActivityHomeBinding
+import com.livinglifetechway.k4kotlinsample.retrofit.RetrofitActivity
 
 class HomeActivity : AppCompatActivity() {
 

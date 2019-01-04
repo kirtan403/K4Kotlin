@@ -1,4 +1,4 @@
-package com.livinglifetechway.k4kotlinsample.RetrofitApi
+package com.livinglifetechway.k4kotlinsample.retrofit
 
 import com.livinglifetechway.k4kotlinsample.BuildConfig
 import okhttp3.OkHttpClient
