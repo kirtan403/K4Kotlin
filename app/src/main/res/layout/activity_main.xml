@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
         tools:context="com.livinglifetechway.k4kotlinsample.MainActivity">
 
         <LinearLayout
@@ -103,6 +104,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hide Keyboard" />
+
+            <Button
+                android:id="@+id/button_show_keyboard"
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Keyboard" />
 
             <Button
                 android:id="@+id/button_show_all"

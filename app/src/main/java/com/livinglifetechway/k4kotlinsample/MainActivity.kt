@@ -13,6 +13,7 @@ import com.livinglifetechway.k4kotlin.core.onItemSelected
 import com.livinglifetechway.k4kotlin.core.orZero
 import com.livinglifetechway.k4kotlin.core.setItems
 import com.livinglifetechway.k4kotlin.core.show
+import com.livinglifetechway.k4kotlin.core.showKeyboard
 import com.livinglifetechway.k4kotlin.core.showViews
 import com.livinglifetechway.k4kotlin.core.startActivity
 import com.livinglifetechway.k4kotlin.core.toast
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         mBinding.buttonFadeIn.setOnClickListener { helloWorld.fadeIn() }
         mBinding.buttonFadeOut.setOnClickListener { helloWorld.fadeOut() }
         mBinding.buttonHideKeyboard.setOnClickListener { hideKeyboard() }
+        mBinding.buttonShowKeyboard.setOnClickListener { mBinding.edit.showKeyboard() }
         mBinding.buttonShowAll.setOnClickListener { showViews(mBinding.helloWorld, mBinding.edit) }
         mBinding.buttonHideAll.setOnClickListener { hideViews(mBinding.helloWorld, mBinding.edit) }
 
