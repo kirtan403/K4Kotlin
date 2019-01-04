@@ -18,16 +18,32 @@ Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
     // K4Kotlin core extension functions
-    compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.6.0'
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin-core:1.0.0-beta1'
     
-    // Extensions for Retrofit
-    compile 'com.github.kirtan403.k4kotlin:k4kotlin-retrofit:0.6.0'
+    // K4Kotlin androidx extension functions (Uses appcompat version of androidx)
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin-androidx:1.0.0-beta1'
+    
+    // K4Kotlin databinding extension functions
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin-databinding:1.0.0-beta1'
+    
+    // K4Koltin Extensions for Retrofit
+    compile 'com.github.kirtan403.k4kotlin:k4kotlin-retrofit:1.0.0-beta1'
 }
 ```
 
 
 
-#### NOTE: Upgrading from < 0.3.0
+### Upgrade Notes 
+
+
+
+#### Upgrading to 1.0.0-beta1
+
+All the functions have been divided into multiple dependencies. Now all functions that can directly be called without any `androidx` dependencies are part of the `k4kotlin-core` module. All the functions that requires one or more `androidx` component, are moved to `k4kotlin-androidx` module.  Databinding related functions are moved to `k4kotlin-databinding` package. So you can just what is required for you without adding unnecessary components to your project. The full migration guide will be published with changes when 1.0.0 hits stable.
+
+
+
+#### Upgrading from < 0.3.0 to < 1.0.0
 
 If you are upgrading from `0.1.x` or `0.2.x` to  `> 0.3.0`, you might need to change the dependency in your `build.gradle` file. 
 
@@ -43,6 +59,8 @@ compile 'com.github.kirtan403.k4kotlin:k4kotlin:0.3.0'
 ```
 
 Then, additionally you can add as many other modules you might need.
+
+
 
 ## [Usage / Documentaion](https://github.com/kirtan403/K4Kotlin/wiki)
 
