@@ -34,10 +34,10 @@ inline fun <reified T> T.verbose(msg: Any?, throwable: Throwable? = null) = Log.
 inline fun <reified T> T.warning(msg: Any?, throwable: Throwable? = null) = Log.w(this!!.TAG, msg.toString(), throwable)
 
 /**
- * Logs a error message
+ * Logs an error message
  * @param msg object to log
  */
-inline fun <reified T> T.error(msg: Any?, throwable: Throwable? = null) = Log.e(this!!.TAG, msg.toString(), throwable)
+inline fun <reified T> T.err(msg: Any?, throwable: Throwable? = null) = Log.e(this!!.TAG, msg.toString(), throwable)
 
 
 /**
