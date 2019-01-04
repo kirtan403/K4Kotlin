@@ -1,1 +1,1 @@
-include ':app', ':k4kotlin', ':k4kotlin-retrofit', ':k4kotlincore', ':databinding', ':androidx'
+include ':app', ':k4kotlin', ':k4kotlin-retrofit', ':k4kotlin-core', ':k4kotlin-databinding', ':k4kotlin-androidx'

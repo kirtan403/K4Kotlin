@@ -1,12 +1,17 @@
-package com.livinglifetechway.k4kotlin
+/*
+package com.livinglifetechway.k4kotlin.core.androidx
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.livinglifetechway.k4kotlin.core.hide
+import com.livinglifetechway.k4kotlin.core.show
 
+*/
 /**
  * Sets an empty state view for the Recycler view which automatically shown/hidden based on
  * current state of the data
- */
+ *//*
+
 fun <VH : RecyclerView.ViewHolder> RecyclerView.Adapter<VH>.setEmptyStateView(view: View): RecyclerView.AdapterDataObserver {
     val dataObserver = object : RecyclerView.AdapterDataObserver() {
         override fun onChanged() = checkForEmptyState()
@@ -32,4 +37,4 @@ fun <VH : RecyclerView.ViewHolder> RecyclerView.Adapter<VH>.setEmptyStateView(vi
     dataObserver.checkForEmptyState()
 
     return dataObserver
-}
+}*/
